@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Events</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Community Events</h1>
+        <input type="text" id="searchInput" placeholder="Search for events..." />
+    </header>
+
+    <main>
+        <section class="events-container" id="eventsContainer">
+            <!-- Events will be dynamically added here -->
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Library Portal. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Sample data for community events
+const events = [
+    {
+        title: "Book Reading: Children's Tales",
+        description: "Join us for an engaging storytelling session for kids.",
+        date: "October 25, 2024",
+    },
+    {
+        title: "Creative Writing Workshop",
+        description: "A workshop to enhance your writing skills.",
+        date: "November 1, 2024",
+    },
+    {
+        title: "Library Fundraiser",
+        description: "Help us raise funds for expanding our library resources.",
+        date: "November 15, 2024",
+    },
+    {
+        title: "Science Fair for Teens",
+        description: "Showcase your science projects and compete for prizes.",
+        date: "December 5, 2024",
+    },
+];
+
+// Function to display events in the container
+function displayEvents(events) {
+    const eventsContainer = document.getElementById("eventsContainer");
+    eventsContainer.innerHTML = ""; // Clear previous content
+
+    events.forEach(event => {
+        const card = document.createElement("div");
+        card.classList.add("event-card");
+        card.innerHTML = `
+            <h3>${event.title}</h3>
+            <p>${event.description}</p>
+            <p class="event-date">${event.date}</p>
+        `;
+        eventsContainer.appendChild(card);
+    });
+}
+
+// Display all events on page load
+displayEvents(events);
+
+// Search functionality
+document.getElementById("searchInput").addEventListener("input", function (e) {
+    const searchText = e.target.value.toLowerCase();
+    const filteredEvents = events.filter(event =>
+        event.title.toLowerCase().includes(searchText) ||
+        event.description.toLowerCase().includes(searchText)
+    );
+    displayEvents(filteredEvents);
+});
+
+    </script>
+    <style>
+        /* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    text-align: center;
+    padding: 2rem;
+    background-color: #00509e;
+    color: white;
+}
+
+input[type="text"] {
+    width: 80%;
+    max-width: 400px;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.events-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2rem;
+}
+
+.event-card {
+    background-color: white;
+    width: 300px;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.event-card h3 {
+    color: #00509e;
+    margin-bottom: 0.5rem;
+}
+
+.event-card p {
+    margin: 0.5rem 0;
+}
+
+.event-date {
+    font-weight: bold;
+    color: #333;
+    margin-top: 1rem;
+}
+
+    </style>
+</body>
+</html>
