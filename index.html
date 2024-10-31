@@ -8,6 +8,55 @@
 </head>
 <body>
     <header>
+        <div class="header">
+            <button class="circle-button" onclick="goBack()">
+                <span class="arrow">←</span>
+            </button>
+        
+            <script>
+                function goBack() {
+                    window.history.back();
+                }
+            </script>
+            <style>
+                /* Reset some default styles */
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+    
+    /* Circular Button Styling */
+    .circle-button {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;  /* Make it circular */
+        background-color: #4CAF50;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s, transform 0.2s;
+    }
+    
+    /* Arrow Styling */
+    .arrow {
+        font-size: 24px;
+        color: white;
+        font-weight: bold;
+    }
+    
+    /* Hover Effect */
+    .circle-button:hover {
+        background-color: #45a049;
+        transform: scale(1.1);
+    }
+    
+            </style>
         <h1>Community Events</h1>
         <input type="text" id="searchInput" placeholder="Search for events..." />
     </header>
@@ -90,7 +139,7 @@ body {
 header {
     text-align: center;
     padding: 2rem;
-    background-color: #00509e;
+    background-color: #45a049;
     color: white;
 }
 
@@ -121,7 +170,7 @@ input[type="text"] {
 }
 
 .event-card h3 {
-    color: #00509e;
+    color: blue;
     margin-bottom: 0.5rem;
 }
 
